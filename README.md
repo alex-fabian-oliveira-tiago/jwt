@@ -1,6 +1,8 @@
 # jwt
 
-Excelente ensinamento com exemplo prático do Matheus Battisti de uma aplicação usando BCrypt e JWT (JSON Web Token) e Banco de Dados Mongo DB Atlas.
+Excelente ensinamento com exemplo prático do Matheus Battisti @matheusbattisti de uma aplicação usando BCrypt e JWT (JSON Web Token) e Banco de Dados Mongo DB Atlas.
+
+Canal do Matheus: https://github.com/matheusbattisti
 
 Link para o video: https://www.youtube.com/watch?v=qEBoZ8lJR3k&t=3s
 

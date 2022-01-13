@@ -1,6 +1,6 @@
 /* Imports */
 require('dotenv').config()
-const exprexx = require('express')
+const express = require('express')
 const moogoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')

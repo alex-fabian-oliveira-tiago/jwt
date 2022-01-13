@@ -127,14 +127,13 @@ app.post('/usuario/login', async(req, res) => {
     try {
         const secret = process.env.SECRET
         const token = jwt.sign({
-            id: user._id,
-
-        }, secret)
+                id: user._id,
+            }, secret, { expiresIn: 300 }) // O TOKEN expira em 5 minutos...
 
         return res.status(200).json({ message: 'Autenticação realizada com sucesso!', token })
 
     } catch (error) {
-        console.log(error)
+        //console.log(error)
         return res.status(500).json({ message: 'Aconteceu um erro no servidor! Tente novamente mais tarde...' })
     }
 

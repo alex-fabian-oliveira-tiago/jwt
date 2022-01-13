@@ -69,6 +69,50 @@ app.post('/auth/register', async(req, res) => {
     // })
 })
 
+/* Login user */
+app.post('/auth/login', async(req, res) => {
+    const { email, password } = req.body
+
+    // Validations
+    if (!email || !password) {
+        return res.status(422).json({ message: "O E-mail e a senha devem ser preenchidos!" })
+    }
+
+    // Check if User exists
+    const user = await User.findOne({ email: email })
+
+    if (!user) {
+        return res.status(404).json({ message: "Usuário não cadastrado no sistema! Informe outro e-mail..." })
+    }
+
+    // Check if user password match with stored on database
+    const checkPassword = await bcrypt.compare(password, user.password)
+
+    if (!checkPassword) {
+        return res.status(401).json({ message: "A senha digitada não combina com a senha do usuário..." })
+    }
+
+    // Formatting a TOKEN to user
+    try {
+        const secret = process.env.SECRET
+        const token = jwt.sign({
+            id: user._id,
+
+        }, secret)
+
+        console.log(token)
+
+        return res.status(200).json({ message: "Usuário logado com sucesso!" })
+
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: 'Aconteceu um erro no servidor! Tente novamente mais tarde...' })
+    }
+
+    // return res.status(200).json({ message: "Validações ok!!!" })
+
+})
+
 /* Credentials */
 const dbUser = process.env.DB_USER
 const dbPassword = process.env.DB_PASS

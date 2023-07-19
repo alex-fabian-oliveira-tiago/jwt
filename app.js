@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 /* Privates Routes */
-app.get('/private/:id', checkToken, async(req, res) => {
+app.get('/private/:id', checkToken, async (req, res) => {
     const id = req.params.id
 
     // Check if User exists
@@ -53,7 +53,7 @@ function checkToken(req, res, next) {
 }
 
 /* Register User */
-app.post('/usuario/cadastro', async(req, res) => {
+app.post('/usuario/cadastro', async (req, res) => {
 
     const { name, email, password1, password2 } = req.body
 
@@ -90,7 +90,7 @@ app.post('/usuario/cadastro', async(req, res) => {
     } catch (error) {
         console.log(error)
         return res.status(500).json({ message: 'Aconteceu um erro no servidor! Tente novamente mais tarde...' })
-            // Ou return res.status(500).json({ message: error }) // Não se deve mostrar erros do servidor para o Frontend!!!
+        // Ou return res.status(500).json({ message: error }) // Não se deve mostrar erros do servidor para o Frontend!!!
     }
 
     // return res.status(200).json(req.body)
@@ -101,7 +101,7 @@ app.post('/usuario/cadastro', async(req, res) => {
 })
 
 /* Login user */
-app.post('/usuario/login', async(req, res) => {
+app.post('/usuario/login', async (req, res) => {
     const { email, password } = req.body
 
     // Validations
@@ -127,8 +127,8 @@ app.post('/usuario/login', async(req, res) => {
     try {
         const secret = process.env.SECRET
         const token = jwt.sign({
-                id: user._id,
-            }, secret, { expiresIn: 300 }) // O TOKEN expira em 5 minutos...
+            id: user._id,
+        }, secret, { expiresIn: 300 }) // O TOKEN expira em 5 minutos...
 
         return res.status(200).json({ message: 'Autenticação realizada com sucesso!', token })
 

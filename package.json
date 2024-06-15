@@ -11,13 +11,14 @@
     "license": "MIT",
     "description": "",
     "dependencies": {
-        "bcrypt": "^5.0.1",
+        "bcrypt": "^5.1.1",
         "dotenv": "^11.0.0",
-        "express": "^4.17.2",
+        "express": "^4.19.2",
         "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.1.6"
+        "mongoose": "^6.13.0",
+        "punycode": "^2.3.1"
     },
     "devDependencies": {
-        "nodemon": "^2.0.15"
+        "nodemon": "^2.0.22"
     }
 }
